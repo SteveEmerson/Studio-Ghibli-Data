@@ -5,16 +5,22 @@
 
 // Initial variables and queries
 let baseURL = 'https://ghibliapi.herokuapp.com';
-let resultsPar = document.querySelector('.ghibli-data');
-let getGhibli = document.querySelector('.ghibli-button');
+let backGroundDiv = document.querySelector('.background-image');
 let mainContainer = document.querySelector('.container');
+
+let backImages = ['chihiro016.jpg', 'chihiro025.jpg', 'chihiro037.jpg', 'ged014.jpg', 'ged020.jpg', 'kaguyahime007.jpg', 'kaguyahime010.jpg', 'kaguyahime021.jpg', 'karigurashi003.jpg', 'karigurashi021.jpg', 'karigurashi027.jpg', 'kazetachinu001.jpg', 'kazetachinu024.jpg', 'kazetachinu043.jpg', 'kokurikozaka003.jpg', 'kokurikozaka009.jpg', 'kokurikozaka010.jpg', 'marnie001.jpg', 'marnie013.jpg', 'marnie037.jpg', 'ponyo016.jpg', 'ponyo041.jpg']
 
 let moviePics = ['Castle_in_the_Sky.webp', 'Grave_of_the_Fireflies_Japanese_poster.webp', 'My_Neighbor_Totoro.webp', 'kikis-delivery-service-md-web.jpg', 'only-yesterdy.jpg', 'porco-rosso.jpg','pom-poko.jpg', 'StudioGhibli_WhisperLarge1_master.jpg', 'mononoke.jpg', 'My_Neighbors_the_Yamadas.webp','spirited-away.jpg', 'thecatreturns--hayao-miyazaki-cartoons.jpg','howls-moving-castle.jpg', 'tales-from-earthsea.jpg', 'ponyo.jpg', 'arriety.jpg','from-up-on-poppy-hill.jpg','wind-rises.jpg','kaguya.jpg','marnie.jpg' ]
 
-//Add event listener to button
-getGhibli.addEventListener("click", getGhibliFilms);
+// Get random background image
+let imgIndex = Math.floor(Math.random()*backImages.length);
+let backImagePath = './assets/images/ghibli-random/' + backImages[imgIndex];
+backGroundDiv.style.backgroundImage = "url(" + backImagePath + ")";
 
-//get the data
+// Driver
+getGhibliFilms();
+
+//Get the data
 function getGhibliFilms(){
   let url = baseURL + "/films"
   fetch(url)
@@ -22,7 +28,6 @@ function getGhibliFilms(){
     return results.json();
   })
   .then(data => {
-    console.log(data);
     buildPage(data)
   })
   .catch(err => console.log(err));
@@ -39,8 +44,11 @@ function buildPage(data){
 
 //Builds the individual movie data row. Returns the row.
 function makeRow(rowData, imageSrc){
-  const imageColWidth = 4;
-  const detailsColWidth = 12 - imageColWidth;
+
+  console.log(rowData);
+  const imageColWidth = 3;
+  const detailsColWidth = (12 - imageColWidth) / 2;
+  const summaryColWidth = (12 - imageColWidth) / 2;
   const imagePath = './assets/images/' + imageSrc;
 
   // The row
@@ -48,11 +56,15 @@ function makeRow(rowData, imageSrc){
   movie.setAttribute('class', 'row movie');
 
   // Column elements
-  let imageCol = document.createElement('div', 'col-med-'+imageColWidth);
+  let imageCol = document.createElement('div');
+  imageCol.setAttribute('class', 'col-med-'+ imageColWidth + ' image');
   movie.appendChild(imageCol);
-  let detailsCol = document.createElement('div', 'col-med-'+detailsColWidth);
-  detailsCol.setAttribute('class', 'details');
+  let detailsCol = document.createElement('div');
+  detailsCol.setAttribute('class', 'col-med-'+ detailsColWidth + ' details');
   movie.appendChild(detailsCol);
+  let summaryCol = document.createElement('div');
+  summaryCol.setAttribute('class', 'col-med-'+ summaryColWidth + ' summary');
+  movie.appendChild(summaryCol);
 
   // Stuff in the rows
   let movieImage = document.createElement('img');
@@ -83,6 +95,11 @@ function makeRow(rowData, imageSrc){
   releasePar.setAttribute('class', 'bio-par');
   releasePar.textContent = `Release: ${rowData.release_date}`;
   bioDiv.appendChild(releasePar);
+
+  let summaryPar = document.createElement('p');
+  summaryPar.setAttribute('class', 'summary-par');
+  summaryPar.textContent = rowData.description;
+  summaryCol.appendChild(summaryPar);
 
   return movie;
   
