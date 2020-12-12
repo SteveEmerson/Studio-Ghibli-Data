@@ -27,6 +27,7 @@
   z-index: 0;
   margin-left: 20px;
   margin-right: 20px;
+  z-index: 0;
 }
 
 .nav {
@@ -37,6 +38,7 @@
   height: 100px;
   border-top: solid 2px;
   border-bottom: solid 2px;
+  z-index: 1;
 }
 
 #title {
@@ -48,7 +50,6 @@
 }
 
 .movie {
-  height: 200px;
   vertical-align: middle;
   margin-bottom: 40px;
   /* margin-left: 10%;
@@ -57,7 +58,7 @@
 }
 
 .movie-image {
-  height: 200px;
+  height: 220px;
 }
 
 .bio {
@@ -67,17 +68,62 @@
 
 .bio-par {
   margin-bottom: 0px;
-  font-size: 1.5rem;
+  /* font-size: 1rem; */
+}
+
+.details {
+  font-size: 1rem;
 }
 
 .summary {
-  margin-left: 20px;
-  margin-top: 10px;
+  margin-left: 2%;
+  margin-top: 2%;
   width: 50%;
+  position: relative;
 }
 
+.summary-div {
+  padding-bottom: 20px;
+  position: relative;
+  left: 5%;
+}
 .summary-par {
   font-size: 0.75rem;
   word-break: normal;
   white-space: normal;
+}
+
+.person-par {
+  font-size: 0.75rem;
+  word-break: normal;
+  white-space: normal;
+}
+
+.person-bio-div {
+  position: relative;
+  left: 20%;
+  padding-left: 5%;
+}
+
+.bio-data-par {
+  word-break: normal;
+  white-space: normal;
+}
+
+.data-links {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+}
+
+.data-link {
+  padding: 0px 10px 0px 10px;
+}
+
+.data-link :hover {
+  color: blue;
+}
+
+.data-panel {
+  background-color: lightgray;
 }
