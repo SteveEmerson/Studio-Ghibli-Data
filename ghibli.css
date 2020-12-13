@@ -21,32 +21,61 @@
 }
 
 .container {
-  /* position: fixed; */
-  left: 0;
+  position: relative;
+  width: 80%;
+  left: 0%;
   right: 0;
-  z-index: 0;
-  margin-left: 20px;
-  margin-right: 20px;
   z-index: 0;
 }
 
 .nav {
-  background-color: white;
+  color: #fff;
+  background-color: #000;
   position: fixed;
   margin-bottom: 20px;
   width: 100%;
-  height: 100px;
-  border-top: solid 2px;
-  border-bottom: solid 2px;
+  height: 8vh;
+  /* border-top: solid 2px;
+  border-bottom: solid 2px; */
   z-index: 1;
 }
 
+#ghibli-icon-link {
+  position: relative;
+  top: 25%;
+  left: 1%;
+}
+
+#ghibli-icon {
+  height: 30%;
+}
+
 #title {
-  margin: auto;
-  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  top: 25%;
+  left: 3%;
+  font-size: 4vh;
 }
 .spacer {
   height: 140px;
+}
+
+.image-menu {
+  height: 12vh;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  top: 12vh;
+}
+
+.menu-pic {
+  height: 100%;
+}
+
+.menu-pic:hover {
+  box-shadow: 0px 0px 5px #fff;
 }
 
 .movie {
@@ -54,25 +83,42 @@
   margin-bottom: 40px;
   /* margin-left: 10%;
   margin-right: 10%; */
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 50vh;
+  position: relative;
+  top: 16vh;
+}
+
+.image {
+  height: 100%;
 }
 
 .movie-image {
-  height: 220px;
+  height: 100%;
 }
 
-.bio {
+.movie-details {
   margin-left: 20px;
   margin-top: 10px;
-}
-
-.bio-par {
-  margin-bottom: 0px;
-  /* font-size: 1rem; */
+  position: relative;
+  top: 2%;
 }
 
 .details {
   font-size: 1rem;
+}
+
+.title-par {
+  border-bottom: solid 2px;
+  width: fit-content;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.detail-par {
+  margin-bottom: 0px;
+  /* font-size: 1rem; */
 }
 
 .summary {
@@ -88,7 +134,7 @@
   left: 5%;
 }
 .summary-par {
-  font-size: 0.75rem;
+  font-size: 1rem;
   word-break: normal;
   white-space: normal;
 }
@@ -97,17 +143,39 @@
   font-size: 0.75rem;
   word-break: normal;
   white-space: normal;
+  padding: 5px;
+  margin: 5px;
+  background-color: lightsalmon;
+}
+
+.person-par:hover {
+  box-shadow: 0px 0px 5px #000;
+  /* color: #fff; */
+}
+
+.person-name-div {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1;
+  align-content: flex-start;
 }
 
 .person-bio-div {
   position: relative;
-  left: 20%;
+  left: 0%;
   padding-left: 5%;
 }
 
+.bio-name-par {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border-bottom: solid 1px;
+}
 .bio-data-par {
+  font-size: 0.8rem;
   word-break: normal;
   white-space: normal;
+  margin-bottom: 10px;
 }
 
 .data-links {
@@ -120,7 +188,7 @@
   padding: 0px 10px 0px 10px;
 }
 
-.data-link :hover {
+.data-link:hover {
   color: blue;
 }
 

@@ -14,14 +14,18 @@ let baseURL = 'https://ghibliapi.herokuapp.com';
 let backGroundDiv = document.querySelector('.background-image');
 let mainContainer = document.querySelector('.container');
 
+// The images below are from https://www.ghibli.jp/
 let backImages = ['chihiro016.jpg', 'chihiro025.jpg', 'chihiro037.jpg', 'ged014.jpg', 'ged020.jpg', 'kaguyahime007.jpg', 'kaguyahime010.jpg', 'kaguyahime021.jpg', 'karigurashi003.jpg', 'karigurashi021.jpg', 'karigurashi027.jpg', 'kazetachinu001.jpg', 'kazetachinu024.jpg', 'kazetachinu043.jpg', 'kokurikozaka003.jpg', 'kokurikozaka009.jpg', 'kokurikozaka010.jpg', 'marnie001.jpg', 'marnie013.jpg', 'marnie037.jpg', 'ponyo016.jpg', 'ponyo041.jpg']
 
-let moviePics = ['Castle_in_the_Sky.webp', 'Grave_of_the_Fireflies_Japanese_poster.webp', 'My_Neighbor_Totoro.webp', 'kikis-delivery-service-md-web.jpg', 'only-yesterdy.jpg', 'porco-rosso.jpg','pom-poko.jpg', 'StudioGhibli_WhisperLarge1_master.jpg', 'mononoke.jpg', 'My_Neighbors_the_Yamadas.webp','spirited-away.jpg', 'thecatreturns--hayao-miyazaki-cartoons.jpg','howls-moving-castle.jpg', 'tales-from-earthsea.jpg', 'ponyo.jpg', 'arriety.jpg','from-up-on-poppy-hill.jpg','wind-rises.jpg','kaguya.jpg','marnie.jpg' ]
+
+// The images below, except "only-yesterday" are from https://www.ghibli.jp/
+let moviePics = ['laputa.jpg', 'hotarunohaka.jpg', 'totoro.jpg', 'majo.jpg', 'only-yesterdy.jpg', 'porco-rosso.jpg','pom-poko.jpg', 'mimi.jpg', 'mononoke.jpg', 'yamada.jpg','chihiro.jpg', 'baron.jpg','howl.jpg', 'ged.jpg', 'ponyo.jpg', 'karigurashi.jpg','kokurikozaka.jpg','kazetachinu.jpg','kaguyahime.jpg','marnie.jpg' ]
 
 // Get random background image
 let imgIndex = Math.floor(Math.random()*backImages.length);
 let backImagePath = './assets/images/ghibli-random/' + backImages[imgIndex];
 backGroundDiv.style.backgroundImage = "url(" + backImagePath + ")";
+
 
 // Driver
 getGhibliData();
@@ -78,26 +82,50 @@ function getGhibliData(){
 // Build the page using the data
 function buildPage(data){
 
+  // Loop through the movies
   for(let i = 0; i < data.length; i++){
-    mainContainer.appendChild(makeRow(data[i], moviePics[i], i));
+
+    // Build the image menu row
+    let imageMenu = document.querySelector(".image-menu");
+    let menuPic = document.createElement("img");
+    menuPic.className = 'menu-pic';
+    menuPic.id = data[i].id;
+    menuPic.src = './assets/images/' + moviePics[i];
+    menuPic.addEventListener('click', makeRow);
+    imageMenu.appendChild(menuPic);
   }
 
 }
 
 //Builds the individual movie data row. Returns the row.
-function makeRow(movieData, imageSrc, num){
+//function makeRow(movieData, imageSrc, num){
 
-  // console.log(movieData);
+function makeRow(e){
+
+  // Clear the previous selection 
+  
+  if (mainContainer.hasChildNodes()) {
+    mainContainer.removeChild(mainContainer.childNodes[0]);
+  } 
+
+  const movieId = e.target.id;
+  const imagePath = e.target.src;
+  console.log(imagePath);
+
+  let movieData = movies.find(element => element.id == movieId);
+  console.log(movieData);
+
   const imageColWidth = 2;
   const detailsColWidth = 3;
   const summaryColWidth = 7;
-  const imagePath = './assets/images/' + imageSrc;
+
+  //const imagePath = './assets/images/' + imageSrc;
 
   // The row
   let movie = document.createElement('div');
   movie.setAttribute('class', 'row movie');
 
-  movie.setAttribute('id', movieData.id);
+  movie.setAttribute('id', movieId);
 
   // Column elements
   let imageCol = document.createElement('div');
@@ -116,30 +144,30 @@ function makeRow(movieData, imageSrc, num){
   movieImage.setAttribute('src', imagePath);
   imageCol.appendChild(movieImage);
 
-  // bio column
-  let bioDiv = document.createElement('div');
-  bioDiv.setAttribute('class', 'bio');
-  detailsCol.appendChild(bioDiv);
+  // details column
+  let movieDetails = document.createElement('div');
+  movieDetails.setAttribute('class', 'movie-details');
+  detailsCol.appendChild(movieDetails);
 
   let titlePar = document.createElement('p');
-  titlePar.setAttribute('class', 'bio-par');
-  titlePar.textContent = `Title: ${movieData.title}`;
-  bioDiv.appendChild(titlePar);
+  titlePar.setAttribute('class', 'title-par');
+  titlePar.textContent = `${movieData.title}`;
+  movieDetails.appendChild(titlePar);
 
   let directorPar = document.createElement('p');
-  directorPar.setAttribute('class', 'bio-par');
+  directorPar.setAttribute('class', 'detail-par');
   directorPar.textContent = `Director: ${movieData.director}`;
-  bioDiv.appendChild(directorPar);
+  movieDetails.appendChild(directorPar);
 
   let producerPar = document.createElement('p');
-  producerPar.setAttribute('class', 'bio-par');
+  producerPar.setAttribute('class', 'detail-par');
   producerPar.textContent = `Producer: ${movieData.producer}`;
-  bioDiv.appendChild(producerPar);
+  movieDetails.appendChild(producerPar);
 
   let releasePar = document.createElement('p');
-  releasePar.setAttribute('class', 'bio-par');
+  releasePar.setAttribute('class', 'detail-par');
   releasePar.textContent = `Release: ${movieData.release_date}`;
-  bioDiv.appendChild(releasePar);
+  movieDetails.appendChild(releasePar);
 
   // summary column
   let summaryDiv = document.createElement('div');
@@ -183,7 +211,7 @@ function makeRow(movieData, imageSrc, num){
   locationsLink.addEventListener('click', addLocations);
   dataLink.append(locationsLink);
 
-  return movie;
+  mainContainer.appendChild(movie);
   
 }
 
@@ -221,10 +249,10 @@ function addPeople(e){
   }else{
 
     let personNameDiv = document.createElement("div");
-    personNameDiv.className = "col-md-3";
+    personNameDiv.className = "col-md-7 person-name-div";
     summaryDiv.appendChild(personNameDiv);
     let personBioDiv = document.createElement("div");
-    personBioDiv.className = "col-md-9 person-bio-div";
+    personBioDiv.className = "col-md-5 person-bio-div";
     summaryDiv.appendChild(personBioDiv);
 
     for(person of peopleArray){
@@ -300,10 +328,10 @@ function addSpecies(e){
     summaryDiv.appendChild(none);
   }else{
     let speciesNameDiv = document.createElement("div");
-    speciesNameDiv.className = "col-md-2";
+    speciesNameDiv.className = "col-md-6 person-name-div";
     summaryDiv.appendChild(speciesNameDiv);
     let speciesInfoDiv = document.createElement("div");
-    speciesInfoDiv.className = "col-md-10 person-bio-div";
+    speciesInfoDiv.className = "col-md-6 person-bio-div";
     summaryDiv.appendChild(speciesInfoDiv);
 
     for(const s of speciesArray){
@@ -379,10 +407,10 @@ function addLocations(e){
     summaryDiv.appendChild(none);
   }else{
     let locationsNameDiv = document.createElement("div");
-    locationsNameDiv.className = "col-md-2";
+    locationsNameDiv.className = "col-md-6 person-name-div";
     summaryDiv.appendChild(locationsNameDiv);
     let locationsInfoDiv = document.createElement("div");
-    locationsInfoDiv.className = "col-md-10 person-bio-div";
+    locationsInfoDiv.className = "col-md-6 person-bio-div";
     summaryDiv.appendChild(locationsInfoDiv);
 
     for(const loc of locationsArray){
