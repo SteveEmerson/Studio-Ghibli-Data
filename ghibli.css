@@ -26,6 +26,9 @@
   left: 0%;
   right: 0;
   z-index: 0;
+  top: 16vh;
+  /* font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
+    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; */
 }
 
 .nav {
@@ -51,7 +54,8 @@
 }
 
 #title {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
+    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   position: relative;
   top: 25%;
   left: 3%;
@@ -86,7 +90,6 @@
   background-color: rgba(255, 255, 255, 0.9);
   height: 50vh;
   position: relative;
-  top: 16vh;
 }
 
 .image {
@@ -131,10 +134,10 @@
 .summary-div {
   padding-bottom: 20px;
   position: relative;
-  left: 5%;
+  /* left: 5%; */
 }
 .summary-par {
-  font-size: 1rem;
+  font-size: 0.9rem;
   word-break: normal;
   white-space: normal;
 }
