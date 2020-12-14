@@ -103,7 +103,7 @@ function buildPage(data){
 function makeRow(e){
 
   // Clear the previous selection 
-  
+
   if (mainContainer.hasChildNodes()) {
     mainContainer.removeChild(mainContainer.childNodes[0]);
   } 
@@ -173,6 +173,7 @@ function makeRow(e){
   let summaryDiv = document.createElement('div');
   summaryDiv.setAttribute('class', 'row summary-div');
   summaryCol.appendChild(summaryDiv);
+  
   let summaryPar = document.createElement('p');
   summaryPar.setAttribute('class', 'summary-par');
   description = movieData.description;
@@ -180,7 +181,7 @@ function makeRow(e){
   summaryDiv.appendChild(summaryPar);
 
   let dataLink = document.createElement("div");
-  dataLink.className = 'data-links';
+  dataLink.className = 'row data-links';
   summaryCol.append(dataLink);
 
   let summaryLink = document.createElement("span");
@@ -215,7 +216,7 @@ function makeRow(e){
   
 }
 
-// Functions to build summary inormation based on link clicks
+// Functions to build summary information based on link clicks
 function addSummary(e){
   let movieId =  e.target.parentNode.parentNode.parentNode.id;
 

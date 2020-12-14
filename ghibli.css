@@ -22,7 +22,7 @@
 
 .container {
   position: relative;
-  width: 80%;
+  width: 82%;
   left: 0%;
   right: 0;
   z-index: 0;
@@ -113,10 +113,9 @@
 
 .title-par {
   border-bottom: solid 2px;
-  width: fit-content;
   text-align: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .detail-par {
@@ -125,23 +124,30 @@
 }
 
 .summary {
-  margin-left: 2%;
-  margin-top: 2%;
   width: 50%;
   position: relative;
 }
 
 .summary-div {
-  padding-bottom: 20px;
-  position: relative;
+  /* position: relative; */
+  margin-left: 5%;
+  margin-top: 2%;
   /* left: 5%; */
 }
 .summary-par {
   font-size: 0.9rem;
   word-break: normal;
   white-space: normal;
+  padding-right: 1%;
+  width: 90%;
 }
 
+.person-name-div {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1;
+  align-content: flex-start;
+}
 .person-par {
   font-size: 0.75rem;
   word-break: normal;
@@ -156,16 +162,7 @@
   /* color: #fff; */
 }
 
-.person-name-div {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 1;
-  align-content: flex-start;
-}
-
 .person-bio-div {
-  position: relative;
-  left: 0%;
   padding-left: 5%;
 }
 
@@ -174,6 +171,7 @@
   margin-bottom: 10px;
   border-bottom: solid 1px;
 }
+
 .bio-data-par {
   font-size: 0.8rem;
   word-break: normal;
@@ -184,7 +182,8 @@
 .data-links {
   position: absolute;
   bottom: 0;
-  margin-bottom: 10px;
+  margin-bottom: 2%;
+  margin-left: 5%;
 }
 
 .data-link {
