@@ -22,6 +22,7 @@
 
 .container {
   position: relative;
+  padding: 0;
   width: 82%;
   left: 0%;
   right: 0;
@@ -38,6 +39,7 @@
   margin-bottom: 20px;
   width: 100%;
   height: 8vh;
+  min-height: 50px;
   /* border-top: solid 2px;
   border-bottom: solid 2px; */
   z-index: 1;
@@ -67,6 +69,7 @@
 
 .image-menu {
   height: 12vh;
+  max-height: 75px;
   margin-bottom: 30px;
   display: flex;
   justify-content: space-around;
@@ -89,7 +92,9 @@
   margin-right: 10%; */
   background-color: rgba(255, 255, 255, 0.9);
   height: 50vh;
+  max-height: 240px;
   position: relative;
+  width: 100%;
 }
 
 .image {
@@ -126,20 +131,25 @@
 .summary {
   width: 50%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .summary-div {
-  /* position: relative; */
+  display: flex;
   margin-left: 5%;
   margin-top: 2%;
-  /* left: 5%; */
+  height: 80%;
+  width: 95%;
 }
 .summary-par {
-  font-size: 0.9rem;
-  word-break: normal;
-  white-space: normal;
+  display: inline;
+  font-size: 0.78rem;
+  /* word-break: normal;
+  white-space: normal; */
   padding-right: 1%;
-  width: 90%;
+  width: 100%;
 }
 
 .person-name-div {
@@ -180,10 +190,11 @@
 }
 
 .data-links {
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
   margin-bottom: 2%;
   margin-left: 5%;
+  width: fit-content;
 }
 
 .data-link {

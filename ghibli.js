@@ -115,7 +115,7 @@ function makeRow(e){
   let movieData = movies.find(element => element.id == movieId);
   console.log(movieData);
 
-  const imageColWidth = 2;
+  const imageColWidth = "";
   const detailsColWidth = 3;
   const summaryColWidth = 7;
 
@@ -129,7 +129,7 @@ function makeRow(e){
 
   // Column elements
   let imageCol = document.createElement('div');
-  imageCol.setAttribute('class', 'col-med-'+ imageColWidth + ' image');
+  imageCol.setAttribute('class', 'col-med'+ imageColWidth + ' image');
   movie.appendChild(imageCol);
   let detailsCol = document.createElement('div');
   detailsCol.setAttribute('class', 'col-med-'+ detailsColWidth + ' details');
