@@ -1,8 +1,6 @@
 # Studio Ghibli Movie Information
+## Elevenfifty Academy - API Project
+### Discover characters, creatures and places from the films of Studio Ghibli.
 
-
-### Steve Emerson
-
-Elevenfifty Academy - API Project
 
 Using https://ghibliapi.herokuapp.com
