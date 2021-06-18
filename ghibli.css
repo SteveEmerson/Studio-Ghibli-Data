@@ -110,6 +110,7 @@
   margin-top: 10px;
   position: relative;
   top: 2%;
+  max-width: 250px;
 }
 
 .details {
@@ -126,6 +127,7 @@
 .detail-par {
   margin-bottom: 0px;
   /* font-size: 1rem; */
+  word-wrap: break-word;
 }
 
 .summary {

@@ -19,7 +19,7 @@ let backImages = ['chihiro016.jpg', 'chihiro025.jpg', 'chihiro037.jpg', 'ged014.
 
 
 // The images below, except "only-yesterday" are from https://www.ghibli.jp/
-let moviePics = ['laputa.jpg', 'hotarunohaka.jpg', 'totoro.jpg', 'majo.jpg', 'only-yesterdy.jpg', 'porco-rosso.jpg','pom-poko.jpg', 'mimi.jpg', 'mononoke.jpg', 'yamada.jpg','chihiro.jpg', 'baron.jpg','howl.jpg', 'ged.jpg', 'ponyo.jpg', 'karigurashi.jpg','kokurikozaka.jpg','kazetachinu.jpg','kaguyahime.jpg','marnie.jpg' ]
+let moviePics = ['laputa.jpg', 'hotarunohaka.jpg', 'totoro.jpg', 'majo.jpg', 'only-yesterdy.jpg', 'porco-rosso.jpg','pom-poko.jpg', 'mimi.jpg', 'mononoke.jpg', 'yamada.jpg','chihiro.jpg', 'baron.jpg','howl.jpg', 'ged.jpg', 'ponyo.jpg', 'karigurashi.jpg','kokurikozaka.jpg','kazetachinu.jpg','kaguyahime.jpg','marnie.jpg', 'red-turtle.jpg' ]
 
 // Get random background image
 let imgIndex = Math.floor(Math.random()*backImages.length);
