@@ -3,7 +3,7 @@
   Started 12/5/20
 */
 
- // Gonna need some global vaiables dangit.
+ // Gonna need some global variables dangit.
 let movies;  // holds data from film fetch
 let people;  // holds data from people fetch
 let species;  // holds data from species fetch
